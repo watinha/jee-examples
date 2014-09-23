@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+     id="WebApp_ID" version="3.0">
+    <display-name>JavaCMD for Web</display-name>
+    <servlet>
+        <servlet-name>FirstWeb</servlet-name>
+        <servlet-class>controllers.FirstWeb</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Users</servlet-name>
+        <servlet-class>controllers.Users</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>FirstWeb</servlet-name>
+        <url-pattern>/abobrinha</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Users</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>filters.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/abobrinha</url-pattern>
+    </filter-mapping>
+</web-app>
