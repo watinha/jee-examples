@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <h:head>
+        <title>Frutas Felizes</title>
+        <style type="text/css" media="screen">
+            li > a:after {
+                content: " ";
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <h1>Frutas</h1>
+        <h:form>
+            <h:inputText id="novaFruta" value="${frutaUI.novaFruta}" />
+            <h:commandButton action="${frutaUI.add()}" value="ok" />
+        </h:form>
+        <ul>
+        <c:forEach items="${frutaUI.lista}" var="f">
+            <li>
+                ${f}
+            </li>
+        </c:forEach>
+        </ul>
+        <script type="text/javascript" charset="utf-8">
+            document.getElementById("novaFruta").focus();
+        </script>
+    </h:body>
+</html>

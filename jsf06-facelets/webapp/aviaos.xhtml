@@ -1,0 +1,13 @@
+<ui:composition template="commons/templates.xhtml"
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:c="http://java.sun.com/jsp/jstl/core"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <ui:param name="pageTitle" value="Aviãos page - abobrinha.com/aviaos" />
+    <ui:define name="principal">
+        <h:form>
+            <h:commandLink action="#{navigationRules.index}" value="voltar" />
+        </h:form>
+    </ui:define>
+</ui:composition>
