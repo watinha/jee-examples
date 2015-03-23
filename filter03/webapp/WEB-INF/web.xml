@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns="http://java.sun.com/xml/ns/javaee"
+     xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+     id="WebApp_ID" version="3.0">
+    <display-name>Exemplos a ser filtros</display-name>
+    <servlet>
+        <servlet-name>Servlet1</servlet-name>
+        <servlet-class>servlets.Servlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet1</servlet-name>
+        <url-pattern>/1</url-pattern>
+    </servlet-mapping>
+    <servlet>
+        <servlet-name>Servlet2</servlet-name>
+        <servlet-class>servlets.Servlet2</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Servlet2</servlet-name>
+        <url-pattern>/2</url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>I18nFilter</filter-name>
+        <filter-class>filters.I18nFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>I18nFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+    <filter>
+        <filter-name>ProtetorFilter</filter-name>
+        <filter-class>filters.ProtetorFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ProtetorFilter</filter-name>
+        <url-pattern>/2</url-pattern>
+    </filter-mapping>
+</web-app>
