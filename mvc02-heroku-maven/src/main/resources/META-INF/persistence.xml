@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://java.sun.com/xml/ns/persistence
+         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd"
+      version="2.0">
+    <persistence-unit name="jpa01">
+        <class>br.edu.utfpr.mvc01.model.pojo.Cidade</class>
+        <properties>
+            <property name="javax.persistence.jdbc.driver"
+                      value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url"
+                      value="jdbc:postgresql://abobrinha.com:5432/jpa01" />
+            <property name="javax.persistence.jdbc.user"
+                      value="postgres" />
+            <property name="javax.persistence.jdbc.password"
+                      value="yao" />
+            <property name="openjpa.jdbc.SynchronizeMappings"
+                      value="buildSchema(ForeignKeys=true)"/>
+        </properties>
+    </persistence-unit>
+</persistence>
