@@ -1,0 +1,9 @@
+li form {
+    display: inline;
+}
+li form input[type="submit"] {
+    border: none;
+    background-color: transparent;
+    color: blue;
+    text-decoration: underline;
+}
