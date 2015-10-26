@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html ng-app="frutasApp">
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Index</title>
+        <script type="text/javascript" charset="utf-8" src="angular.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="angular-animate.min.js"></script>
+        <style type="text/css" media="screen">
+            li {
+                transition: all linear 0.3s;
+                max-height: 100px;
+                overflow: hidden;
+                background-color: #FFFFFF;
+            }
+            li.hidden,
+            li.ng-leave.ng-leave-active,
+            li.ng-enter {
+                max-height: 0;
+                overflow: hidden;
+                background-color: #FFFFAA;
+            }
+            li.ng-leave,
+            li.ng-enter.ng-enter-active {
+                max-height: 100px;
+                background-color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body ng-controller="FrutasController as controller">
+        <h1>Controle de frutas</h1>
+        <input ng-model="controller.busca"
+               ng-keypress="controller.add($event)"
+               type="text" name="nome" value=""
+               autocomplete="off"/>
+        <ul>
+            <li ng-repeat="fruta in controller.frutas" class="{{fruta.hidden}}">
+                {{fruta.nome}}
+            </li>
+        </ul>
+        <script type="text/javascript" charset="utf-8" src="FrutasController.js"></script>
+    </body>
+</html>

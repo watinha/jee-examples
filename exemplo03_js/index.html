@@ -1,0 +1,80 @@
+<!DOCTYPE HTML>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Index</title>
+        <style type="text/css" media="screen">
+            li {
+                max-height: 0px;
+                overflow: hidden;
+                background-color: #CCCC99;
+                padding: 0px;
+                transition: all linear 0.3s;
+                -webkit-transition: all linear 0.3s;
+                -moz-transition: all linear 0.3s;
+                -o-transition: all linear 0.3s;
+                -ie-transition: all linear 0.3s;
+            }
+            li.aparecendo {
+                padding: 5px;
+                max-height: 100px;
+                background-color: #FFFFFF;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Exemplo 2 do JavaScript</h1>
+        <form action="#" method="get" accept-charset="utf-8">
+            <input id="campo" type="text" name="nome" value="" autocomplete="off"/>
+        </form>
+        <ul id="container"></ul>
+        <script type="text/javascript" charset="utf-8">
+            var input = document.querySelector("input"),
+                container = document.querySelector("#container");
+            input.addEventListener("keypress", function (e) {
+                    if (e.keyCode === 13) {
+                        var nome = input.value,
+                            novo = document.createElement("li"),
+                            remover = document.createElement("a"),
+                            editar = document.createElement("a");
+                        novo.innerHTML = nome + " ";
+                        remover.innerHTML = "[remover] ";
+                        remover.href = "#";
+                        remover.addEventListener("click", function () {
+                            novo.classList.remove("aparecendo");
+                            setTimeout(function () {
+                                container.removeChild(novo);
+                            }, 300);
+                        });
+                        editar.innerHTML = "[editar]";
+                        editar.href = "#";
+                        editar.addEventListener("click", function () {
+                            novo.classList.remove("aparecendo");
+                            setTimeout(function () {
+                                container.removeChild(novo);
+                            }, 300);
+                            input.value = nome;
+                            input.focus();
+                        });
+                        novo.appendChild(remover);
+                        novo.appendChild(editar);
+                        container.appendChild(novo);
+                        input.value = "";
+                        setTimeout(function () {
+                            novo.classList.add("aparecendo");
+                        }, 100);
+                        e.preventDefault();
+                    }
+            });
+            input.addEventListener("keyup", function () {
+                var childs = container.querySelectorAll("ul > li");
+                for (var i = 0; i < childs.length; i++) {
+                    if (childs[i].innerHTML.search(input.value) === 0) {
+                        childs[i].classList.add("aparecendo");
+                    } else {
+                        childs[i].classList.remove("aparecendo");
+                    }
+                }
+            });
+        </script>
+    </body>
+</html>

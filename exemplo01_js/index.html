@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Index</title>
+        <style type="text/css" media="screen">
+            .zebra {
+                color: white;
+                background-color: black;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Primeiro código JavaScript</h1>
+        <script type="text/javascript" charset="utf-8">
+            var a = ["mensagem 1", "mensagem 2", "talvez mensagem 3",
+                     "mensagem 9", "abacate", "pepino"];
+            for (var i = 1; i <= 10; i++) {
+                if (i % 2 === 0)
+                    document.write("<h2>" + a[(i - 1) % 6] + "</h2>");
+                else
+                    document.write("<h2 class=\"zebra\">" + a[(i - 1) % 6] + "</h2>");
+            }
+        </script>
+    </body>
+</html>
