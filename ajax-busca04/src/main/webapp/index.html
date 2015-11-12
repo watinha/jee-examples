@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type"
+              content="text/html; charset=utf-8" />
+        <title>Exemplo AJAX para Busca</title>
+    </head>
+    <body>
+        <h1>Exemplo AJAX para Busca</h1>
+        <input type="text" name="busca" value="" autocomplete="off"/>
+        <ul id="container"></ul>
+        <script type="text/javascript" charset="utf-8">
+            var container = document.querySelector("#container");
+            document.querySelector("input")
+                    .addEventListener("keyup", function () {
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.open("GET", "cidade?nome=" + this.value, true);
+                xmlhttp.onreadystatechange = function () {
+                    if (xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                        var cidades = xmlhttp.responseText.split(',');
+                        container.innerHTML = "";
+                        for (var i = 0; i < (cidades.length - 1); i++) {
+                            var li = document.createElement("li");
+                            li.innerHTML = cidades[i];
+                            li.className = "";
+                            container.appendChild(li);
+                        }
+                    }
+                };
+                xmlhttp.send();
+            });
+        </script>
+    </body>
+</html>

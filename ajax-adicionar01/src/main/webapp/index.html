@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <title>Index</title>
+        <style type="text/css" media="screen">
+            .aviso { color: orange; }
+            .sucesso { color: green; }
+            .erro { color: red; }
+        </style>
+    </head>
+    <body>
+        <h1>Exemplo de POST via AJAX</h1>
+        <input type="text" name="fruta" value="" />
+        <span id="mensagens" class=""></span>
+        <ul id="container"><ul>
+        <script type="text/javascript" charset="utf-8">
+            var container = document.querySelector("#container"),
+                mensagens = document.querySelector("#mensagens");
+            document.querySelector("input").addEventListener("keyup", function (ev) {
+                if (ev.keyCode != 13)
+                    return ;
+                var xhr = new XMLHttpRequest(),
+                    self = this;
+                xhr.open("POST", "fruta", true);
+                xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState < 4) {
+                        mensagens.innerHTML = "carregando...";
+                        mensagens.className = "aviso";
+                    }
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        mensagens.innerHTML = "sucesso.";
+                        mensagens.className = "sucesso";
+                        self.value = "";
+
+                    }
+                    if (xhr.readyState === 4 && xhr.status != 200) {
+                        mensagens.innerHTML = "erro";
+                        mensagens.className = "erro";
+                    }
+                };
+                xhr.send("nome=" + this.value);
+            });
+            setInterval(function () {
+                var xhr = new XMLHttpRequest();
+                xhr.open("GET", "fruta", true);
+                xhr.onreadystatechange = function () {
+                    container.innerHTML = "";
+                    if (xhr.readyState === 4 && xhr.status === 200) {
+                        var frutas = xhr.responseText.split(",");
+                        for (var i = 0; i < (frutas.length - 1); i++) {
+                            var li = document.createElement("li");
+                            li.innerHTML = frutas[i];
+                            container.appendChild(li);
+                        }
+                    }
+                };
+                xhr.send();
+            }, 5000);
+        </script>
+    </body>
+</html>
