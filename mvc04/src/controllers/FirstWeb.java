@@ -15,20 +15,21 @@ import models.Usuario;
 public class FirstWeb extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response)
-                throws IOException, ServletException {
+            throws IOException, ServletException {
         this.doGet(request, response);
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response)
-                throws IOException, ServletException {
-		ArrayList <Usuario> list = new ArrayList <Usuario> ();
-		for (int i = 0; i < 10; i++) {
-			Usuario usuario = new Usuario();
-			usuario.setId(1);
-			usuario.setNome("Usuario " + i);
-			list.add(usuario);
-		}
+            throws IOException, ServletException {
+        ArrayList<Usuario> list = new ArrayList<Usuario>();
+        for (int i = 0; i < 10; i++) {
+            Usuario usuario = new Usuario();
+            usuario.setId(1);
+            usuario.setNome("Usuario " + i);
+            list.add(usuario);
+        }
 
+        //pegando parametros
         String novo = request.getParameter("something");
         if (novo != null) {
             Usuario usuario = new Usuario();
@@ -40,9 +41,9 @@ public class FirstWeb extends HttpServlet {
         String url = request.getServletPath();
 
         request.setAttribute("deslogarUrl", "/?deslogar=1");
-		request.setAttribute("list", list);
-		request.setAttribute("url", url);
-		request.getRequestDispatcher("/web-inf/views/common/main.jsp")
-			   .forward(request, response);
+        request.setAttribute("list", list);
+        request.setAttribute("url", url);
+        request.getRequestDispatcher("/web-inf/views/common/main.jsp")
+                .forward(request, response);
     }
 }
