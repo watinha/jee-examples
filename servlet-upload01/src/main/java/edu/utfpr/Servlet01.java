@@ -1,10 +1,13 @@
 package edu.utfpr;
 
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.io.FileOutputStream;
-import java.io.InputStream;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.PrintWriter;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -50,14 +53,10 @@ public class Servlet01 extends HttpServlet {
         String images_path = req.getServletContext().getRealPath("/uploads");
         InputStream in = part.getInputStream();
         if (part.getContentType().equals("image/png")) {
-            FileOutputStream out = new FileOutputStream(
-                    new File(images_path + "/" + this.id++ + ".png"));
-            byte [] buffer = new byte[1024];
-            int read = 0;
-            while ((read = in.read(buffer)) != -1)
-                out.write(buffer, 0, read);
-            out.close();
+            Files.copy(in, Paths.get(images_path + "/" + this.id++ + ".png"), StandardCopyOption.REPLACE_EXISTING);
         }
+        part.delete();
+        res.sendRedirect("01");
    }
 
 }
