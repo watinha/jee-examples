@@ -9,6 +9,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,7 @@ public class Servlet01 extends HttpServlet {
     public void doGet (HttpServletRequest req,
                        HttpServletResponse res) throws IOException {
         PrintWriter writer = res.getWriter();
+
         writer.println("<!DOCTYPE HTML>");
         writer.println("<html>");
         writer.println("    <head>");
@@ -43,6 +45,11 @@ public class Servlet01 extends HttpServlet {
         writer.println("            <input type=\"file\" name=\"arquivo\" value=\"\" />");
         writer.println("            <input type=\"submit\" name=\"enviar\" value=\"submit\" />");
         writer.println("        </form>");
+        writer.println("<ul>");
+        for (int i = 0; i < this.id; i++) {
+            writer.println("    <li><img src=\"uploads/" + i + ".png\" height=\"100\"></img></li>");
+        }
+        writer.println("</ul>");
         writer.println("    </body>");
         writer.println("</html>");
     }
